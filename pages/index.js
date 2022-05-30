@@ -9,6 +9,7 @@ import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import { InView } from "react-intersection-observer";
 
 export default function Home({ about, skills, projects }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -40,10 +41,33 @@ export default function Home({ about, skills, projects }) {
       />
 
       <main>
-        <About about={about[0].fields} />
+        {/* About / Skills */}
+        <InView
+          threshold={0.5}
+          as="section"
+          onChange={(inView) => inView && setNavItemSelected(1)}
+        >
+          <About about={about[0].fields} />
+        </InView>
         <Skills skills={skills} />
-        <Projects skills={skills} projects={projects} />
-        <Contact />
+
+        {/* Projects */}
+        <InView
+          threshold={0.2}
+          as="section"
+          onChange={(inView) => inView && setNavItemSelected(2)}
+        >
+          <Projects skills={skills} projects={projects} />
+        </InView>
+
+        {/* Contact */}
+        <InView
+          threshold={0.8}
+          as="section"
+          onChange={(inView) => inView && setNavItemSelected(3)}
+        >
+          <Contact />
+        </InView>
       </main>
       <Footer />
       {/* Nav */}

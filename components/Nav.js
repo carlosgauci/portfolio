@@ -1,6 +1,7 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import UnderlineAnimated from "./UnderlineAnimated";
+import Link from "next/link";
 
 export default function Nav({ mobile, setNavOpen, navItemSelected }) {
   const links = ["about", "projects", "contact"];
@@ -35,9 +36,11 @@ const NavLink = ({ link, index, mobile, setNavOpen, navItemSelected }) => {
         onAnchorLinkClick={mobile ? () => setNavOpen(false) : null}
         className="focus:text-primary focus:outline-none"
       > */}
-      <button className="capitalize focus:outline-none" tabIndex={-1}>
-        {link}
-      </button>
+      <Link href={`/#${link}`}>
+        <button className="capitalize focus:outline-none" tabIndex={-1}>
+          {link}
+        </button>
+      </Link>
       {/* </AnchorLink> */}
       <AnimatePresence>
         {navItemSelected === index && <UnderlineAnimated />}

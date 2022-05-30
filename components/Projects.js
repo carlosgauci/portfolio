@@ -7,7 +7,7 @@ export default function Projects({ projects, skills }) {
   return (
     <InView threshold={0} triggerOnce={true}>
       {({ ref, inView }) => (
-        <section id="projects" className="mb-4 lg:mb-14" ref={ref}>
+        <section id="projects" className="mb-4 lg:mb-14 " ref={ref}>
           <div className="container py-6 flex flex-col items-center">
             {/* Title */}
             <motion.h2
@@ -27,15 +27,17 @@ export default function Projects({ projects, skills }) {
               initial="hidden"
               animate={inView && "show"}
             >
-              {projects.map((project) => {
-                return (
-                  <ProjectCard
-                    key={project.id}
-                    project={project.fields}
-                    skills={skills}
-                  />
-                );
-              })}
+              {[...projects]
+                .sort((a, b) => a.fields.order - b.fields.order)
+                .map((project) => {
+                  return (
+                    <ProjectCard
+                      key={project.id}
+                      project={project.fields}
+                      skills={skills}
+                    />
+                  );
+                })}
             </motion.section>
           </div>
         </section>

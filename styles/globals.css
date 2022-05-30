@@ -28,6 +28,7 @@
     @apply scrollbar-thin;
     @apply scrollbar-track-black;
     @apply scrollbar-thumb-primaryDark;
+    @apply scroll-smooth;
   }
 
   h1,
