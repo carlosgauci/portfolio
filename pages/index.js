@@ -5,6 +5,7 @@ import NavModal from "../components/NavModal";
 import { AnimatePresence } from "framer-motion";
 import { base } from "../utils/airtable";
 import About from "../components/About";
+import Skills from "../components/Skills";
 
 export default function Home({ about, skills, projects }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -17,6 +18,8 @@ export default function Home({ about, skills, projects }) {
       ? (html.style.overflow = "hidden")
       : (html.style.overflow = "visible");
   }, [navOpen]);
+
+  // console.log(skills);
 
   return (
     <div>
@@ -36,7 +39,8 @@ export default function Home({ about, skills, projects }) {
       />
 
       <main>
-        <About data={about[0].fields} />
+        <About about={about[0].fields} />
+        <Skills skills={skills} />
       </main>
       <footer>footer</footer>
 

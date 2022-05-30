@@ -215,7 +215,7 @@ export const arrowAnimation = {
 };
 
 // Skills section
-export const skillsVariants = {
+export const skillAnimation = {
   // Skill icons container
   hidden: {
     opacity: 0,
@@ -240,7 +240,7 @@ export const skillsVariants = {
 };
 
 // Skill icons
-export const skillIconVariants = {
+export const skillIconAnimation = {
   hidden: {
     x: -10,
     opacity: 0,

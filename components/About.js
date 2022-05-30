@@ -3,13 +3,10 @@ import { aboutAnimation, arrowAnimation } from "../framer/variants";
 import Image from "next/image";
 
 export default function About({
-  data: { aboutDesc, aboutPic, aboutPrefix, aboutTitle },
+  about: { aboutDesc, aboutPic, aboutPrefix, aboutTitle },
 }) {
-  // Framer motion - hide scroll down arrow on scroll
   const { scrollY } = useViewportScroll();
   const arrowDisplay = useTransform(scrollY, [0, 5], ["3rem", "0rem"]);
-
-  console.log(aboutPic);
 
   return (
     <motion.section
