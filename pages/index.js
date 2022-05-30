@@ -7,6 +7,7 @@ import { base } from "../utils/airtable";
 import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
+import Contact from "../components/Contact";
 
 export default function Home({ about, skills, projects }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -41,6 +42,7 @@ export default function Home({ about, skills, projects }) {
         <About about={about[0].fields} />
         <Skills skills={skills} />
         <Projects skills={skills} projects={projects} />
+        <Contact />
       </main>
       <footer>footer</footer>
 

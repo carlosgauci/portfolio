@@ -303,7 +303,7 @@ export const projectCardAnimation = {
 };
 
 // Contact section
-export const contactVariants = {
+export const contactAnimation = {
   // Icons
 
   // Left icon
@@ -370,7 +370,7 @@ export const contactVariants = {
 };
 
 // Contact Form
-export const contactFormVariants = {
+export const contactFormAnimation = {
   initial: {
     opacity: 0,
     y: 25,
