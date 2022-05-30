@@ -7,7 +7,7 @@ export default function Projects({ projects, skills }) {
   return (
     <InView threshold={0} triggerOnce={true}>
       {({ ref, inView }) => (
-        <section id="projects" className="mb-4 lg:mb-14 " ref={ref}>
+        <section id="projects" className="mb-4 lg:mb-14 scroll-mt-20" ref={ref}>
           <div className="container py-6 flex flex-col items-center">
             {/* Title */}
             <motion.h2

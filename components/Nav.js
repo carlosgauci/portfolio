@@ -31,17 +31,15 @@ export default function Nav({ mobile, setNavOpen, navItemSelected }) {
 const NavLink = ({ link, index, mobile, setNavOpen, navItemSelected }) => {
   return (
     <li className={`relative ${mobile ? "mb-6" : "mr-6"}`}>
-      {/* <AnchorLink
-        to={`/#${link}`}
-        onAnchorLinkClick={mobile ? () => setNavOpen(false) : null}
-        className="focus:text-primary focus:outline-none"
-      > */}
       <Link href={`/#${link}`}>
-        <button className="capitalize focus:outline-none" tabIndex={-1}>
+        <button
+          className="capitalize focus:outline-none"
+          tabIndex={-1}
+          onClick={mobile ? () => setNavOpen(false) : null}
+        >
           {link}
         </button>
       </Link>
-      {/* </AnchorLink> */}
       <AnimatePresence>
         {navItemSelected === index && <UnderlineAnimated />}
       </AnimatePresence>
