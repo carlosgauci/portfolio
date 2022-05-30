@@ -255,7 +255,7 @@ export const skillIconAnimation = {
 };
 
 // Projects section
-export const projectVariants = {
+export const projectAnimation = {
   // Projects container
   hidden: {
     opacity: 0,
@@ -280,7 +280,7 @@ export const projectVariants = {
 };
 
 // Project cards
-export const projectCardVariants = {
+export const projectCardAnimation = {
   hidden: {
     y: 25,
     opacity: 0,
