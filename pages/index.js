@@ -8,6 +8,7 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Home({ about, skills, projects }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -44,8 +45,7 @@ export default function Home({ about, skills, projects }) {
         <Projects skills={skills} projects={projects} />
         <Contact />
       </main>
-      <footer>footer</footer>
-
+      <Footer />
       {/* Nav */}
       <AnimatePresence>
         {navOpen && (

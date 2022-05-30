@@ -16,7 +16,7 @@ export default function Projects({ projects, skills }) {
               initial="initialTitle"
               animate={inView && "animateTitle"}
             >
-              Latest Projects
+              Recent Projects
               <div className="absolute w-full border-b-2 border-primary"></div>
             </motion.h2>
 
