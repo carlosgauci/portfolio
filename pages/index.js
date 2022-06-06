@@ -10,6 +10,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { InView } from "react-intersection-observer";
+import { getPlaiceholder } from "plaiceholder";
 
 export default function Home({ about, skills, projects }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function Home({ about, skills, projects }) {
         <title>Carlos Gauci | Web Developer</title>
         <meta
           name="description"
-          content="Fullstack web developer specializing in Javascript."
+          content="Web developer specializing in Javascript/React, Node.js, and Python"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
@@ -47,7 +48,7 @@ export default function Home({ about, skills, projects }) {
           as="section"
           onChange={(inView) => inView && setNavItemSelected(1)}
         >
-          <About about={about[0].fields} />
+          <About about={about} />
         </InView>
         <Skills skills={skills} />
 
@@ -86,7 +87,14 @@ export default function Home({ about, skills, projects }) {
 
 export async function getStaticProps() {
   let about = await base("About").select({}).firstPage();
-  about = about.map((r) => ({ id: r?.id, fields: r?.fields }));
+  about = about.map((r) => ({
+    title: r?.fields?.title,
+    role: r?.fields?.role,
+    description: r?.fields?.description,
+    image: { url: r?.fields?.image[0].url },
+  }))[0];
+  const { base64 } = await getPlaiceholder(about.image.url);
+  about.image.blur = base64;
 
   let skills = await base("Skills").select({}).firstPage();
   skills = skills
@@ -96,7 +104,20 @@ export async function getStaticProps() {
   let projects = await base("Projects").select({}).firstPage();
   projects = projects
     .filter((p) => p?.fields?.enabled)
-    .map((p) => ({ id: p?.id, fields: p?.fields }));
+    .map((r) => ({
+      id: r?.id,
+      title: r?.fields?.title,
+      description: r?.fields?.description,
+      image: { url: r?.fields?.image[0].url },
+      skills: r?.fields?.skills,
+      order: r?.fields?.order,
+      url: r?.fields?.url,
+    }));
+
+  for (let i in projects) {
+    const { base64 } = await getPlaiceholder(projects[i].image.url);
+    projects[i].image.blur = base64;
+  }
 
   return {
     props: {

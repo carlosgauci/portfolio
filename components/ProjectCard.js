@@ -8,14 +8,7 @@ const ReactTooltip = dynamic(() => import("@huner2/react-tooltip"), {
 });
 
 export default function ProjectCard({ project, skills }) {
-  const {
-    title,
-    description,
-    site,
-    // github,
-    skills: projectSkills,
-    image,
-  } = project;
+  const { title, description, url, skills: projectSkills, image } = project;
 
   // Skill icons needed for this project
   const skillIcons = skills.filter((item) => {
@@ -24,28 +17,30 @@ export default function ProjectCard({ project, skills }) {
 
   return (
     <motion.article
-      className="w-full max-w-sm bg-gray-800 my-6 rounded-lg overflow-hidden lg:mx-6"
+      className="w-full max-w-sm bg-gray-800 my-6 rounded-lg overflow-hidden lg:mx-6 flex flex-col"
       variants={projectCardAnimation}
     >
       {/* Image */}
-      <a href={site} target="_blank" rel="noopener noreferrer">
+      <a href={url} target="_blank" rel="noopener noreferrer">
         <Image
-          src={image[0].url}
+          src={image.url}
           alt={title}
           layout="responsive"
           width="400"
           height="200"
           className="w-full h-full"
+          placeholder="blur"
+          blurDataURL={image.blur}
         />
       </a>
 
       {/* Text */}
-      <section className="p-4 flex flex-col">
+      <section className="p-4 flex flex-col w-full h-full">
         <h3 className="text-white mb-2 text-xl">{title}</h3>
         <p className="text-white mb-4">{description}</p>
 
         {/* Icons */}
-        <section className="flex flex-row flex-wrap">
+        <section className="flex flex-row flex-wrap mt-auto">
           {skillIcons
             .sort((a, b) => a.fields.cardOrder - b.fields.cardOrder)
             .map((icon) => {

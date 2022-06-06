@@ -2,9 +2,7 @@ import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { aboutAnimation, arrowAnimation } from "../framer/variants";
 import Image from "next/image";
 
-export default function About({
-  about: { aboutDesc, aboutPic, aboutPrefix, aboutTitle },
-}) {
+export default function About({ about: { title, description, image, role } }) {
   const { scrollY } = useViewportScroll();
   const arrowDisplay = useTransform(scrollY, [0, 5], ["3rem", "0rem"]);
 
@@ -25,13 +23,15 @@ export default function About({
           animate="animatePic"
         >
           <Image
-            src={aboutPic[0].thumbnails.large.url}
+            src={image.url}
             alt="Carlos Gauci"
             layout="responsive"
             width="400"
             height="400"
             priority
             className="rounded-lg z-10"
+            placeholder="blur"
+            blurDataURL={image.blur}
           />
           <motion.div
             className="absolute bottom-0 left-0 w-full h-full border-4 border-primary rounded-lg z-0"
@@ -43,16 +43,16 @@ export default function About({
 
         {/* Text/About section */}
         <section className="flex flex-col items-center md:mt-6 lg:mt-0 lg:mr-12 lg:items-start">
-          <p className="text-sm text-primary font-bold mb-2 tracking-wider ">
-            {aboutPrefix}
-          </p>
-          <h2 className="text-4xl lg:text-5xl mb-4 relative text-white">
-            {aboutTitle}
+          <h2 className="text-4xl lg:text-5xl mb-2 relative text-white">
+            {title}
 
             <div className="absolute w-full border-b-2 border-primary"></div>
           </h2>
+          <p className="text-sm text-primary font-bold mb-2 tracking-wider ">
+            {role}
+          </p>
           <p className="text-center lg:text-left md:max-w-md px-4 lg:px-0 text-white">
-            {aboutDesc}
+            {description}
           </p>
         </section>
 

@@ -28,12 +28,12 @@ export default function Projects({ projects, skills }) {
               animate={inView && "show"}
             >
               {[...projects]
-                .sort((a, b) => a.fields.order - b.fields.order)
+                .sort((a, b) => a.order - b.order)
                 .map((project) => {
                   return (
                     <ProjectCard
                       key={project.id}
-                      project={project.fields}
+                      project={project}
                       skills={skills}
                     />
                   );
