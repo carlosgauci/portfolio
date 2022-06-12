@@ -70,7 +70,7 @@ export default function Home({ about, skills, projects }) {
           <Contact />
         </InView>
       </main>
-      <Footer />
+      <Footer skills={skills} />
       {/* Nav */}
       <AnimatePresence>
         {navOpen && (

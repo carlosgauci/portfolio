@@ -36,7 +36,9 @@ export default function ProjectCard({ project, skills }) {
 
       {/* Text */}
       <section className="p-4 flex flex-col w-full h-full">
-        <h3 className="text-white mb-2 text-xl">{title}</h3>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <h3 className="text-white mb-2 text-xl">{title}</h3>
+        </a>
         <p className="text-white mb-4">{description}</p>
 
         {/* Icons */}
